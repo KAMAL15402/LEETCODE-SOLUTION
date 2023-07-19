@@ -11,13 +11,12 @@ public:
         // }
         
         //negative marking method
-        vector <int> v;
-        v= nums;
+        
         for(int i=0;i<nums.size();i++){
-            if(v[nums[i]]<0){
-                return nums[i];
+            if(nums[abs(nums[i])]<0){
+                return abs(nums[i]);
             }else{
-                v[nums[i]] *= -1;
+                nums[abs(nums[i])] *= -1;
                 
             }
         }
