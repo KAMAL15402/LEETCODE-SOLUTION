@@ -1,23 +1,29 @@
 class Solution {
 public:
     int findDuplicate(vector<int>& nums) {
-    int slow = nums[0];
-    int fast = nums[0];
+    int low = 1;
+    int high = nums.size() - 1;
 
-    // Phase 1: Detect if there's a cycle in the array
-    do {
-        slow = nums[slow];
-        fast = nums[nums[fast]];
-    } while (slow != fast);
+    while (low < high) {
+        int mid = low + (high - low) / 2;
+        int count = 0;
 
-    // Phase 2: Find the entrance to the cycle
-    slow = nums[0];
-    while (slow != fast) {
-        slow = nums[slow];
-        fast = nums[fast];
+        // Count the number of elements less than or equal to mid
+        for (int num : nums) {
+            if (num <= mid) {
+                count++;
+            }
+        }
+
+        // Adjust the search range based on the count
+        if (count > mid) {
+            high = mid;
+        } else {
+            low = mid + 1;
+        }
     }
 
-    return slow;
+    return low;
 }
 
 };
