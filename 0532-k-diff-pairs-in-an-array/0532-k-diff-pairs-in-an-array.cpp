@@ -12,9 +12,8 @@ public:
                 j++;
             }else if((nums[j]-nums[i]) > k ){
                 i++;
-            } else if((nums[j]-nums[i])< k){
-                j++;
-            }else{
+            } 
+            else{
                 j++;
             }
         }
